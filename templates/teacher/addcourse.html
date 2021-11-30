@@ -1,0 +1,58 @@
+{% extends 'teacher/base.html' %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item"><a href="{% url 'course' %}">Courses</a></li>
+                    <li class="breadcrumb-item active">Add course</li>
+                </ol>
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
+                        <h1 class="h2">Add Course</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow-lg bg-white rounded">
+                            <div class="card-header">
+                                <h4 class="card-title">Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="{% url 'savecourse' %}" method="POST">    
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="form-label"
+                                           for="title">Title</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Write a title of course" value="{{name}}">
+                                    {% if not nameerror == "None" %}
+                                    <br>
+                                    <div class="alert alert-danger p-1 text-center" role="alert">
+                                        {{ nameerror }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Description</label>
+                                    <textarea maxlength="120" class="form-control rounded-0" placeholder="Write a description" name="desc" rows="3">{{desc}}</textarea>
+                                    {% if not descerror == "None" %}
+                                    <br>
+                                    <div class="alert alert-danger p-1 text-center" role="alert">
+                                        {{ descerror }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <button type="submit" class="btn btn-success mt-3 float-right">SAVE</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

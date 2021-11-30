@@ -1,0 +1,43 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            {% for c in course %}
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active"><a href="{% url 'course' %}">Courses</a></li>
+                    <li class="breadcrumb-item active"><a href="{% url 'chapter' c.id %}">Chapters</a></li>
+                    <li class="breadcrumb-item active">Add Chapter</li>
+                </ol>
+                <h1 class="h2">Add Chapter</h1>
+                <div class="card shadow-lg bg-white rounded">
+                    <div class="card-body">
+                        <form action="{% url 'savechapter' c.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <label for="title"
+                                       class="col-md-3 col-form-label form-label">Title</label>
+                                <div class="col-md-6">
+                                    <input name="name" type="text" class="form-control" placeholder="Write a lesson title" value="{{ name }}">
+                                    {% if not nameerror == "None" %}
+                                    <br>
+                                    <div class="alert alert-danger p-1 text-center" role="alert">
+                                        {{ nameerror }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-3 float-right">SAVE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

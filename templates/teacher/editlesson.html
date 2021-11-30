@@ -1,0 +1,66 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            {% for l in lesson %}
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active"><a href="{% url 'course' %}">Courses</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'chapter' course %}">Chapters</a></li>
+                    <li class="breadcrumb-item active"><a href="{% url 'lesson' l.chapter_id %}">Lessons</a></li>
+                    <li class="breadcrumb-item active">Edit Lesson</li>
+                </ol>
+                <h1 class="h2">Edit Lesson</h1>
+                <div class="card shadow-lg bg-white rounded">
+                    <div class="card-body">
+                        <form action="{% url 'updatelesson' l.id l.chapter_id %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <label for="title"
+                                       class="col-md-3 col-form-label form-label">Title</label>
+                                <div class="col-md-6">
+                                    {% if name %}
+                                    <input name="name" type="text" class="form-control" value="{{ name }}">
+                                    {% if not nameerror == "None" %}
+                                    <br>
+                                    <div class="alert alert-danger p-1 text-center" role="alert">
+                                        {{ nameerror }}
+                                    </div>
+                                    {% endif %}
+                                    {% else %}
+                                    <input name="name" type="text" class="form-control" value="{{ l.name }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="avatar" class="col-sm-3 col-form-label form-label">Upload Video</label>
+                                <div class="col-sm-9">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <div class="custom-file" style="width: 65%;">
+                                                <input type="file" class="form-control" name="video" value="{{ l.video.url }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if not videoerror == "None" %}
+                                    <br>
+                                    <div class="alert alert-danger p-1 text-center" style="width: 65%;" role="alert">
+                                        {{ videoerror }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-3 float-right">UPDATE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

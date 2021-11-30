@@ -1,0 +1,56 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            {% for c in course %}
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item"><a href="{% url 'course'%}">Courses</a></li>
+                    <li class="breadcrumb-item active">Chapters</li>
+                </ol>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">Manage Chapters</h1>
+                    </div>
+                    <a href="{% url 'addchapter' c.id %}" class="btn btn-success">Add chapter</a>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow-lg bg-white rounded">
+                            <div class="card-header">
+                                <h4 class="card-title">Chapters</h4>
+                            </div>
+                            <div class="card-body">
+                            {% for ch in chapter %}
+                                <div class="nestable border-left-3 border-left-primary navbar-shadow mb-4 shadow-lg bg-white rounded mb-3" id="nestable-handles-primary">
+                                    <ul class="nestable-list">
+                                        <li class="nestable-item nestable-item-handle" data-id="2">
+                                            <div class="nestable-content">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <a href="{% url 'lesson' ch.id %}"><h3 class="card-title h3">{{ ch.title }}</h3></a>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <a href="{% url 'editchapter' ch.id %}" class="btn btn-white btn-sm" data-toggle="tooltip" title="Edit"><i class="material-icons">edit</i></a>
+                                                        <a href="{% url 'deletechapter' ch.id ch.course_id %}" class="btn btn-white btn-sm" data-toggle="tooltip" title="Delete"><i class="material-icons">delete</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

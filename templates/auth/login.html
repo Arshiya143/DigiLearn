@@ -1,0 +1,96 @@
+{% extends 'auth/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="d-flex align-items-center"
+         style="min-height: 100vh">
+        <div class="col-sm-8 col-md-6 col-lg-4 mx-auto"
+             style="min-width: 300px;">
+            <div class="text-center mt-5 mb-1">
+                <div class="avatar avatar-lg">
+                    <img src="{% static 'images/primary.svg' %}"
+                         class="avatar-img rounded-circle"
+                         alt="LearnPlus" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5 navbar-light">
+                <a href="{% url 'home' %}"
+                   class="navbar-brand m-0">DigiLearn</a>
+            </div>
+            <div class="card navbar-shadow">
+                <div class="card-header text-center">
+                    <h4 class="card-title">Login</h4>
+                    <p class="card-subtitle">Access your account</p>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'sign' %}"
+                          novalidate
+                          method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="name">Username:</label>
+                            <div class="input-group input-group-merge">
+                                <input name="name"
+                                       type="text"
+                                       required=""
+                                       class="form-control form-control-prepended"
+                                       placeholder="Your first and last name"
+                                       value="{{ username }}">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="far fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if not usererror == "None" %}
+                            <br>
+                            <div class="alert alert-danger p-1 text-center" role="alert">
+                                {{ usererror }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="password">Your password:</label>
+                            <div class="input-group input-group-merge" id="show_hide_password">
+                                <input name="password"
+                                       type="password"
+                                       required=""
+                                       class="form-control form-control-prepended"
+                                       placeholder="Your password"
+                                       value="{{ password }}">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <a style="color: black;cursor: pointer;"><i class="far fa-eye-slash" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if not passerror == "None" %}
+                            <br>
+                            <div class="alert alert-danger p-1 text-center" role="alert">
+                                {{ passerror }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group ">
+                            <button type="submit"
+                                    class="btn btn-primary btn-block">Login</button>
+                                    {% if not error == "None" %}
+                                    <br>
+                                    <br>
+                                    <div class="alert alert-danger p-1 text-center" role="alert">
+                                        {{ error }}
+                                    </div>
+                                    {% endif %}
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center text-black-50">
+                    Not yet a Register? <a href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

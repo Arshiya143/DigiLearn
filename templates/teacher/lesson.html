@@ -1,0 +1,58 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item"><a href="{% url 'course'%}">Courses</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'chapter' course %}">Chapters</a></li>
+                    <li class="breadcrumb-item active">Lessons</li>
+                </ol>
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
+                        <h1 class="h2">Lessons</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow-lg bg-white rounded">
+                            <div class="card-header">
+                                <h4 class="card-title">Lessons</h4>
+                            </div>
+                            <div class="card-body">
+                                <p><a href="{% url 'addlesson' chapter %}" class="btn btn-success">Add Lesson <i class="material-icons">add</i></a></p>
+                                    {% for l in lesson %}
+                                <div class="nestable shadow-lg bg-white rounded mb-3" id="nestable-handles-primary">
+                                    <ul class="nestable-list">
+                                        <li class="nestable-item nestable-item-handle" data-id="2">
+                                            <div class="nestable-content">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <video width="200" controls class="float-left rounded" poster="{% static 'images/DigiLearn.png' %}">
+                                                            <source src="{{ l.video.url }}" type="video/mp4">
+                                                        </video>
+                                                        <h3 class="card-title h3 mt-5 mb-5 text-center">{{ l.name }}</h3>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <a href="{% url 'editlesson' l.id %}" class="btn btn-white btn-sm" data-toggle="tooltip" title="Edit"><i class="material-icons">edit</i></a>
+                                                        <a href="{% url 'deletelesson' l.id chapter %}" class="btn btn-white btn-sm" data-toggle="tooltip" title="Delete"><i class="material-icons">delete</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

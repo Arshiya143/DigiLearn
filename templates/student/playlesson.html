@@ -1,0 +1,38 @@
+{% extends 'student/base.html' %}
+{% load static %}
+
+{% block content %}
+            <!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            {% for l in lesson %}
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item"><a href="{% url 'stcourse' %}">Courses</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'listlesson' course %}">Chapters</a></li>
+                    <li class="breadcrumb-item active">{{ l.name }}</li>
+                </ol>
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
+                        <h1 class="h2">{{ l.name }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow-lg rounded">
+                            <div class="nestable">
+                                <video width="905" controls class="float-left rounded" poster="{% static 'images/DigiLearn.png' %}">
+                                    <source src="{{ l.video.url }}" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

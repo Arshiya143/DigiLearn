@@ -1,0 +1,61 @@
+ {% extends 'student/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="container-fluid page__container">
+                {% for c in course %}
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item"><a href="{% url 'stcourse' %}">Courses</a></li>
+                    <li class="breadcrumb-item active">{{ c.title }}</li>
+                </ol>
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
+                        <h1 class="h2">{{ c.title }}</h1>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for ch in chapter %}
+                        <div class="card shadow-lg bg-white rounded">
+                            <div class="card-header">
+                                <h4 class="card-title">{{ ch }}</h4>
+                            </div>
+                            <div class="card-body">
+                            {% for key, value in chapter.items %}
+                                {% if key == ch %}
+                                {% for l in value %}
+                                <div class="nestable border-left-3 border-left-primary navbar-shadow mb-4 shadow-lg bg-white rounded mb-3" id="nestable-handles-primary">
+                                    <ul class="nestable-list">
+                                        <li class="nestable-item nestable-item-handle" data-id="2">
+                                            <div class="nestable-content">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <a href="{% url 'playlesson' l.id l.chapter_id %}"><h3 class="card-title h3">{{ l.name }}</h3></a>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <!--<a href="" class="btn btn-white btn-sm" data-toggle="tooltip" title="Play"><i class="material-icons">play_circle_filled</i></a>-->
+                                                        <a href="{{ l.video.url }}" class="btn btn-white btn-sm" data-toggle="tooltip" title="Download" download><i class="material-icons">file_download</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<img src="{% static 'images/home.jpg' %}" class="img-fluid" alt="Responsive image">
+<section class="fdb-block mt-5" data-block-type="features" data-id="3">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center fr-box" role="application"><div class="fr-wrapper" dir="auto"><div class="fr-element fr-view" dir="auto" contenteditable="true" aria-disabled="false" spellcheck="true"><h1>Features</h1></div></div></div>
+      </div>
+  
+      <div class="row text-center mt-5">
+        <div class="col-12 col-sm-4 fr-box" role="application">
+          <div class="fr-wrapper" dir="auto">
+            <div class="fr-element fr-view" dir="auto" contenteditable="true" aria-disabled="false" spellcheck="true">
+              <p><img alt="image" class="fdb-icon rounded" height="100" src="{% static 'images/central.jpg' %}"></p>
+              <h3><strong>Centralized learning materials</strong></h3>
+              <p>An DigiLearn isn't just for eLearning. It is capable of housing videos, slide decks, written instruction, and various other learning materials in a user-friendly, centralized location. Centralized learning materials allow users and L&D pros to stay organized and provide consistency, two foundational elements of increasing learner engagement.</p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12 col-sm-4 pt-4 pt-sm-0 fr-box" role="application">
+          <div class="fr-wrapper" dir="auto">
+            <div class="fr-element fr-view" dir="auto" contenteditable="true" aria-disabled="false" spellcheck="true"><p>
+              <img alt="image" class="fdb-icon rounded" height="100" src="{% static 'images/track.jpg' %}"></p>
+              <h3><strong>Data tracking</strong></h3>
+              <p>The ability for learning professionals to track a learner’s journey via stored data helps them better understand how the courses and learners are performing, all in the same place. This allows L&D pros to better track and design their learning programs. Furthermore, having the ability to recognize where learners need to build their skills or where they’re excelling helps speed along the training process.</p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12 col-sm-4 pt-4 pt-sm-0 fr-box" role="application">
+          <div class="fr-wrapper" dir="auto">
+            <div class="fr-element fr-view" dir="auto" contenteditable="true" aria-disabled="false" spellcheck="true"><p>
+              <img alt="image" class="fdb-icon rounded" height="100" src="{% static 'images/mobile.jpg' %}"></p>
+              <h3><strong>Remote or mobile-workforce ready</strong></h3>
+              <p>Workforces are changing rapidly and popularity in remote work continues to grow. On-site training may be inconvenient or even impossible for companies with a global presence. An DigiLearn must be remote or mobile-ready to ensure learners have access to materials at all times and that companies have the ability to train their talent, no matter where they are in the world.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mt-5 justify-content-center">
+        <div class="col-8 fr-box" role="application"><div class="fr-wrapper" dir="auto"><div class="fr-element fr-view" dir="auto" contenteditable="true" aria-disabled="false" spellcheck="true"><p><img alt="image" class="img-fluid" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs//draws/product-tour.svg"></p></div></div></div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

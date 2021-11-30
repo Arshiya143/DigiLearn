@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"
+      dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Login</title>
+
+        <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+        <meta name="robots"
+              content="noindex">
+
+        <!-- Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
+              rel="stylesheet">
+
+        <!-- Perfect Scrollbar -->
+        <link type="text/css"
+              href="{% static 'vendor/perfect-scrollbar.css' %}"
+              rel="stylesheet">
+
+        <!-- Material Design Icons -->
+        <link type="text/css"
+              href="{% static 'css/material-icons.css' %}"
+              rel="stylesheet">
+
+        <!-- Font Awesome Icons -->
+        <link type="text/css"
+              href="{% static 'css/fontawesome.css' %}"
+              rel="stylesheet">
+
+        <!-- Preloader -->
+        <link type="text/css"
+              href="{% static 'vendor/spinkit.css' %}"
+              rel="stylesheet">
+
+        <!-- App CSS -->
+        <link type="text/css"
+              href="{% static 'css/app.css' %}"
+              rel="stylesheet">
+
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=gcSjDUr3nFC9jfX_2deUOJ36a23nbJZOjFMiPzZx2jjS1EWU8boEAC2r-VBVc-PnOqUMmwQYpRfBzrgcjScILKJq4jaJBcmIGz-9t4tfWog" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9sZWFybnBsdXMuZGVtby5mcm9udGVuZG1hdHRlci5jb20vZ3Vlc3QtbG9naW4uaHRtbA"/></head>
+    <style>
+      body{
+          background: url("{% static 'images/crystal.jpg' %}") no-repeat;
+          background-size: cover;
+      }
+  </style>
+    <body class="login">
+
+    {% block content %}
+    {% endblock %}
+    
+    
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'vendor/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap.min.js' %}"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="{% static 'vendor/perfect-scrollbar.min.js' %}"></script>
+
+    <!-- MDK -->
+    <script src="{% static 'vendor/dom-factory.js' %}"></script>
+    <script src="{% static 'vendor/material-design-kit.js' %}"></script>
+
+    <!-- App JS -->
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <!-- Highlight.js
+    <script src="assets/js/hljs.js"></script>-->
+
+    <!-- App Settings (safe to remove) -->
+    <script src="{% static 'js/app-settings.js' %}"></script>
+<script>
+      $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active"><a href="{% url 'course' %}">Courses</a></li>
+                </ol>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">Manage Courses</h1>
+                    </div>
+                    <a href="{% url 'addcourse' %}" class="btn btn-success">Add course</a>
+                </div>
+                <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4 shadow-lg bg-white rounded">
+                    <form action="{% url 'course' %}" method="GET">
+                        <div class="d-flex flex-wrap2 align-items-center mb-headings">
+                            <div class="btn btn-white">
+                                <i class="material-icons mr-sm-2">tune</i>
+                                <span class="d-none d-sm-block">Filters</span>
+                            </div>
+                            <div class="flex search-form ml-3 search-form--light">
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Search courses"
+                                       name="search">
+                                <button class="btn"
+                                        type="button"
+                                        role="button"><i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    {% for c in course %}
+                    <div class="col-md-6">
+                        <div class="card shadow-lg bg-white rounded">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-sm-row">
+                                    <a href="{% url 'chapter' c.id %}" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
+                                        <img src="{% static 'images/course.png' %}" class="avatar-img rounded">
+                                    </a>
+                                    <div class="flex" style="min-width: 200px;">
+                                        <h4 class="card-title mb-1"><a href="{% url 'chapter' c.id %}">{{ c.title }}</a></h4>
+                                        <p class="text-black-70">{{ c.desc }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card__options dropdown right-0 pr-2">
+                                <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{% url 'editcourse' c.id %}">Edit course</a>
+                                    <a class="dropdown-item" href="{% url 'chapter' c.id %}">Course Insights</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="{% url 'deletecourse' c.id %}">Delete course</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

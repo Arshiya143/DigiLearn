@@ -1,0 +1,63 @@
+{% extends 'teacher/base.html' %}
+
+{% block content %}
+<div class="mdk-header-layout__content">
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item"><a href="{% url 'course' %}">Courses</a></li>
+                    <li class="breadcrumb-item active">Edit course</li>
+                </ol>
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
+                        <h1 class="h2">Edit Course</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow-lg bg-white rounded">
+                            <div class="card-header">
+                                <h4 class="card-title">Information</h4>
+                            </div>
+                            <div class="card-body">
+                                {% for c in course %}
+                                <form action="{% url 'updatecourse' c.id %}" method="POST">    
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Title</label>
+                                        {% if not nameerror == "None" %}
+                                            <input type="text" name="name" class="form-control" placeholder="Write a title of course" value="{{name}}">
+                                            <br>
+                                            <div class="alert alert-danger p-1 text-center" role="alert">
+                                                {{ nameerror }}
+                                            </div>
+                                        {% else%}
+                                        <input type="text" name="name" class="form-control" placeholder="Write a title of course" value="{{ c.title }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">Description</label>
+                                        {% if not descerror == "None" %}
+                                            <textarea maxlength="120" class="form-control rounded-0" placeholder="Write a description" name="desc" rows="3">{{desc}}</textarea>    
+                                            <br>
+                                            <div class="alert alert-danger p-1 text-center" role="alert">
+                                                {{ descerror }}
+                                            </div>
+                                        {% else %}
+                                        <textarea maxlength="120" class="form-control rounded-0" placeholder="Write a description" name="desc" rows="3">{{ c.desc }}</textarea>
+                                        {% endif %}
+                                    </div>
+                                    <button type="submit" class="btn btn-success mt-3 float-right">UPDATE</button>
+                                </form>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

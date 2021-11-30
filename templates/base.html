@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"
+      dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+              <title>DigiLearn - Innovative teaching & learning</title>
+              <link rel="shortcut icon" href="{% static 'images/primary.svg' %}"/>
+
+        <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+        <meta name="robots"
+              content="noindex">
+
+        <!-- Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
+              rel="stylesheet">
+
+        <!-- Perfect Scrollbar -->
+        <link type="text/css"
+              href="{% static 'vendor/perfect-scrollbar.css' %}"
+              rel="stylesheet">
+
+        <!-- Material Design Icons -->
+        <link type="text/css"
+              href="{% static 'css/material-icons.css' %}"
+              rel="stylesheet">
+
+        <!-- Font Awesome Icons -->
+        <link type="text/css"
+              href="{% static 'css/fontawesome.css' %}"
+              rel="stylesheet">
+
+        <!-- Preloader -->
+        <link type="text/css"
+              href="{% static 'vendor/spinkit.css' %}"
+              rel="stylesheet">
+
+        <!-- App CSS -->
+        <link type="text/css"
+              href="{% static 'css/app.css' %}"
+              rel="stylesheet">
+            
+              <link type="text/css"
+              href="{% static 'css/flatpickr.css' %}"
+              rel="stylesheet">
+        <link type="text/css"
+              href="{% static 'css/flatpickr-airbnb.css' %}"
+              rel="stylesheet">
+
+        <!-- Quill Theme -->
+        <link type="text/css"
+              href="{% static 'css/quill.css' %}"
+              rel="stylesheet">
+
+        <!-- Nestable -->
+        <link rel="stylesheet"
+              href="{% static 'css/nestable.css' %}">
+
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=eCJxZDjU10fLFAYCeWUFH_Nxwk1uFS4uw-FJIykhiQXZu9Bc5umuzmeBXKic3rn-4G8dZKjUXuEI-KDEpElA2cuMIeZJRfrKlTpO6xAk-4axPu_Mp7ED_NOLR0eGmSat" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9sZWFybnBsdXMuZGVtby5mcm9udGVuZG1hdHRlci5jb20vaW5zdHJ1Y3Rvci1jb3Vyc2VzLmh0bWw"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+        <style>
+            body{
+                background: url("{% static 'images/crystal.jpg' %}") no-repeat;
+                background-size: cover;
+            }
+        </style>
+</head>
+<body class=" layout-fluid">
+        <!-- Header Layout -->
+            <div class="mdk-header-layout js-mdk-header-layout">
+            <!-- Header -->
+                  <div id="header" data-fixed class="mdk-header js-mdk-header mb-0">
+                        <div class="mdk-header__content">
+                    <!-- Navbar -->
+                              <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
+                                    <div class="container-fluid">
+                            <!-- Brand -->
+                                          <a href="{% url 'home' %}" class="navbar-brand">
+                                          <img src="{% static 'images/white.svg' %}" class="mr-2"/>
+                                          <span class="d-none d-xs-md-block">DigiLearn</span>
+                                          </a>
+                                          <div class="flex"></div>
+                            <!-- Menu -->
+                                          <ul class="nav navbar-nav flex-nowrap">
+                                <!-- User dropdown -->
+                                                <li class="nav-item ml-1 ml-md-3">
+                                                      <a class="nav-link " href="{% url 'login' %}" role="button">
+                                                      <span class="d-none d-xs-md-block ml-3 text-white">LOGIN</span>
+                                                      </a>
+                                                </li>
+                                <!-- // END User dropdown -->
+                                          </ul>
+                                    </div>
+                              </nav>
+                    <!-- // END Navbar -->
+                        </div>
+                  </div>
+            <!-- // END Header -->
+                  {% block content %}
+                  {% endblock %}
+            </div>
+        <!-- Footer -->
+            <footer class="page-footer font-small blue pt-4 bg-primary">
+    <!-- Footer Links -->
+                  <div class="container-fluid">
+      <!-- Grid row -->
+                        <div class="row">
+        <!-- Grid column -->
+                              <div class="col-lg mt-md-0 mt-3 justify-content-center text-center">
+                                    <a href="{% url 'home' %}">
+                                    <img src="{% static 'images/white.svg' %}" class="mr-2"/>
+                                    <span class="d-none d-xs+-md-block text-white">DigiLearn</span>
+                                    </a>
+                              </div>
+      <!-- Grid row -->
+                        </div>
+                  </div>
+    <!-- Footer Links -->
+    <!-- Copyright -->
+                  <div class="footer-copyright text-center py-3">© 2021 DigiLearn. All Rights Reserved.
+                  </div>
+                  <div class="footer-copyright text-center"><small>Created By - Arshiya Khwajamiya Patel</small>
+                  </div>
+    <!-- Copyright -->
+            </footer>
+  <!-- Footer -->
+
+        <!-- jQuery -->
+            <script src="{% static 'vendor/jquery.min.js' %}"></script>
+
+        <!-- Bootstrap -->
+            <script src="{% static 'vendor/popper.min.js' %}"></script>
+            <script src="{% static 'vendor/bootstrap.min.js' %}"></script>
+
+        <!-- Perfect Scrollbar -->
+            <script src="{% static 'vendor/perfect-scrollbar.min.js' %}"></script>
+
+        <!-- MDK -->
+            <script src="{% static 'vendor/dom-factory.js' %}"></script>
+            <script src="{% static 'vendor/material-design-kit.js' %}"></script>
+
+        <!-- App JS -->
+            <script src="{% static 'js/app.js' %}"></script>
+
+        <!-- Highlight.js 
+        <script src="assets/js/hljs.js' %}"></script>-->
+
+        <!-- App Settings (safe to remove) -->
+            <script src="{% static 'js/app-settings.js' %}"></script>
+</body>
+</html>
