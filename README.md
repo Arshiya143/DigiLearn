@@ -1,60 +1,39 @@
-# DigiLearn
 
-The DigiLearn is a Learning Maanagement System. Here teachers may create and integrate course materials, articulate learning goals, align content and assessments, track studying progress, and create customized tests for students. An LMS allows the communication of learning objectives, and organize learning timelines.
+# DigiLearn - Online Learning Management System
 
-# How to run DigiLearn
- 
-Open DigiLearn-master folder in editor like VScode,PyCharm,Sublime Text.
+This is an Online Learning Management System built with Django and PostgreSQL. The system allows users to create and manage courses, enroll students in courses, manage assignments.
 
-# Postgresql Setting
+# Features
+- User authentication and authorization
+- Course creation and management
+- Course enrollment
+- Assignment creation and submission
 
-Create Learn_db databse into Postgresql.
+# Requirements
+- Python 3.x
+- Django 3.x
+- PostgreSQL
 
-Goto DigiLearn-master->DigiLearn->settings.py Change your password.
+# Installation
+- Clone the repository
+- Create a virtual environment and activate it
+- Install the requirements: pip install -r requirements.txt
+- Create a PostgreSQL database
+- Create a .env file in the root directory and set the following environment variables:
+	SECRET_KEY: Django secret key
+	DATABASE_URL: PostgreSQL database URL
+	DEBUG: Set to True for development
+- Run migrations: python manage.py migrate
+- Create a superuser: python manage.py createsuperuser
+- Run the server: 
+	```bash
+	python manage.py runserver
+	```
+	
+# Usage
+- Once the server is running, navigate to http://localhost:8000 to access the application. 
+- The homepage displays all the available courses. 
+- Users can create an account, enroll in courses, view and submit assignments.
 
-DATABASES = {
-
-   'default': {
-	 
-       'ENGINE': 'django.db.backends.postgresql',
-			 
-       'NAME': 'Learn_db',
-			 
-       'USER': 'postgres',
-			 
-       'PASSWORD': 'write your password',
-			 
-       'HOST': '127.0.0.1',
-			 
-       'PORT': '5433',
-			 
-  	 }
-	 
-}
-
-# Migration
-
-run python manage.py makemigrations into terminal.
-
-Then run python manage.py migrate in terminal.
-
-Once migrations are done all the tables are created into our database.
-
-Now you can successfully run the web application.
-
-python manage.py runserver
-
-# Teacher
-
-Teachers can create their accounts.
-Once they created accounts they are able to upload study material for their subject.
-
-They are able to add,update,delete the course.
-Teacher can upload video of perticular topic in course.
-
-# Student
-
-Students can create their accounts.
-Once they created accounts they are able to access study material for their enrolled subject.
-
-They can browse the courses which they enrolled.They are also able to download study material.
+# Contributing
+Contributions are welcome! To contribute, please create a pull request with your changes.
